@@ -4,6 +4,7 @@ import { format } from "date-fns"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { z } from "zod"
 import { cn } from "@/lib/utils"
 
@@ -39,6 +40,8 @@ const schema = z.object({
 
 export default function CreateEvent() {
 
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -50,8 +53,18 @@ export default function CreateEvent() {
     },
   })
  
-  function onSubmit(values: z.infer<typeof schema>) {
-    console.log(values)
+  const onSubmit = async (values: z.infer<typeof schema>) => {
+    const res = await fetch("/api/events", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...values, availableRoom: values.room }),
+      });
+  
+      if (res.ok) {
+        router.push("/events");
+      } else {
+        alert("Error al crear el evento");
+      }
   }
 
 
