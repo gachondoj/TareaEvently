@@ -1,9 +1,31 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
-export async function GET() {
+export async function GET(req: Request) {
   try {
-    const events = await prisma.event.findMany();
+    const { searchParams } = new URL(req.url);
+    const title = searchParams.get("title") || "";
+    const today = new Date();
+    today.setHours(0, 0, 0, 0)
+  
+    const events = await prisma.event.findMany({
+      where: {
+        title: {
+          contains: title,
+          mode: "insensitive",
+        },
+        date: {
+          gt: today, // Filtra eventos con fecha mayor a hoy
+        },
+        availableRoom: {
+          gt: 0, // Solo eventos con cupos disponibles
+        },
+      },
+      orderBy: {
+        date: "asc", // Ordenar por fecha ascendente
+      },
+    });
+  
     return NextResponse.json(events);
   } catch (error) {
     console.error(error);
