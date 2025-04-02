@@ -3,37 +3,35 @@ import prisma from "@/lib/prisma";
 
 export async function POST(req: Request) {
   try {
-    const { eventId, buyerId } = await req.json();
-
-    if (!eventId || !buyerId) {
-      return NextResponse.json({ error: "EventId y BuyerId son obligatorios" }, { status: 400 });
+    const { tickets } = await req.json();
+    if (!Array.isArray(tickets) || tickets.length === 0) {
+      return NextResponse.json({ error: "Se requiere una lista de tickets" }, { status: 400 });
     }
 
-    const event = await prisma.event.findUnique({ where: { id: eventId } });
-    if (!event) {
-      return NextResponse.json({ error: "Evento no encontrado" }, { status: 404 });
-    }
+    const createdTickets = await prisma.$transaction(async (tx) => {
+      return Promise.all(
+        tickets.map(async ({ eventId, buyerId }) => {
+          const event = await tx.event.findUnique({ where: { id: eventId } });
 
-    const buyer = await prisma.buyer.findUnique({ where: { id: buyerId } });
-    if (!buyer) {
-      return NextResponse.json({ error: "Buyer no encontrado" }, { status: 404 });
-    }
+          if (!event) throw new Error(`Evento con ID ${eventId} no encontrado`);
+          if (event.availableRoom <= 0) throw new Error(`Evento ${event.title} agotado`);
 
-    if (event.availableRoom <= 0) {
-      return NextResponse.json({ error: "No hay boletos disponibles" }, { status: 400 });
-    }
+          const ticket = await tx.ticket.create({
+            data: { eventId, buyerId },
+          });
 
-    const ticket = await prisma.ticket.create({
-      data: { eventId, buyerId },
+          await tx.event.update({
+            where: { id: eventId },
+            data: { availableRoom: event.availableRoom - 1 },
+          });
+
+          return ticket;
+        })
+      );
     });
 
-    await prisma.event.update({
-      where: { id: eventId },
-      data: { availableRoom: event.availableRoom - 1 },
-    });
-
-    return NextResponse.json(ticket, { status: 201 });
-  } catch (error) {
-    return NextResponse.json({ error: "Error en el servidor" }, { status: 500 });
+    return NextResponse.json(createdTickets, { status: 201 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message || "Error en el servidor" }, { status: 500 });
   }
 }
