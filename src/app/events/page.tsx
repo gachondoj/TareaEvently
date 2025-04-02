@@ -12,7 +12,7 @@ export default async function Events() {
 
             <div className="grid grid-cols-3 gap-y-5 gap-x-5">
               {events.map((event) => (
-                <Button key={event.id} asChild className="h-[5rem] w-[25rem] hover:bg-[#9378ff] bg-[#a855f7]">
+                <Button key={event.id} asChild disabled={event.availableRoom == 0} className="h-[5rem] w-[25rem] hover:bg-[#9378ff] bg-[#a855f7]">
                     <a href={`/events/${event.id}`} className="flex flex-col items-start">
                       <h2>{event.title}</h2>
                       <div className="flex justify-between w-full">

@@ -69,9 +69,9 @@ export default function CreateEvent() {
 
 
     return (
-      <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-            <div>CREATE EVENT</div>
+    <div className="justify-items-center flex flex-col justify-center min-h-screen font-[family-name:var(--font-geist-sans)]">
+        <main className="flex flex-col gap-5 p-5 items-center justify-center w-full">
+            <div className="text-[#a855f7] font-bold">CREATE EVENT</div>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                     <FormField
@@ -168,10 +168,17 @@ export default function CreateEvent() {
                             </FormItem>
                         )}
                     />
-            <Button type="submit">Submit</Button>
+            <Button type="submit" className="hover:bg-[#9378ff] bg-[#a855f7]">Submit</Button>
         </form>
             </Form>
         </main>
+        <footer className="w-full flex justify-end pb-5 px-5">
+          <Button asChild>
+            <a href="/admin">
+              Volver
+            </a>
+          </Button>
+        </footer>
       </div>
     )
 }
