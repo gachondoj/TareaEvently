@@ -22,7 +22,7 @@ npx prisma migrate dev --name init
 npm run dev
 ```
 
-## Suposiciones [DESARROLLAR]
+## Suposiciones
 
 1. TurboPack: A la hora de crear el proyecto se elegió TurboPack en lugar de WebPack ya que es más rápido y al estar haciendo un proyecto de prueba no hay riesgos de usar una tecnología en desarrollo
 2. Eventos: La página de eventos solo muestra aquellos que tengan cupos y cuya fecha de realización sera posterior a la fecha actual
