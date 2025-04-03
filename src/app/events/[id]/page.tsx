@@ -233,12 +233,12 @@ export default function Event() {
 
             {
               step == 'success' &&
-              <div>SUCCESS</div>
+              <div>La compra se ha completado con éxito.</div>
             }
 
             {
               step == 'error' &&
-              <div>ERROR</div>
+              <div>Hubo un error realizando tu compra. Por favor intenta denuevo más tarde.</div>
             }
             
         </main>

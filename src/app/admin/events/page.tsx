@@ -71,7 +71,7 @@ export default function CreateEvent() {
     return (
     <div className="justify-items-center flex flex-col justify-center min-h-screen font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-5 p-5 items-center justify-center w-full">
-            <div className="text-[#a855f7] font-bold">CREATE EVENT</div>
+            <div className="text-[#a855f7] font-bold">CREAR EVENTO</div>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                     <FormField
@@ -168,7 +168,7 @@ export default function CreateEvent() {
                             </FormItem>
                         )}
                     />
-            <Button type="submit" className="hover:bg-[#9378ff] bg-[#a855f7]">Submit</Button>
+            <Button type="submit" className="hover:bg-[#9378ff] bg-[#a855f7]">Crear</Button>
         </form>
             </Form>
         </main>
