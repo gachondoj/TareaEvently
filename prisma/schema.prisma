@@ -39,6 +39,7 @@ model Ticket {
   eventId Int
   buyer Buyer @relation(fields: [buyerId], references: [id])
   buyerId Int
+  createdAt DateTime @default(now())
 }
 
 enum STATE {
