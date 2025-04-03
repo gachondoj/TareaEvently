@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Admin() {
     return (
@@ -11,7 +12,7 @@ export default function Admin() {
               <a href="/admin/events">Agregar Evento</a>
             </Button>
             <Button asChild className="hover:bg-[#9378ff] bg-[#a855f7]">
-              <a href="/admin/tickets">Ver Tickets</a>
+              <Link href="/admin/tickets">Ver Tickets</Link>
             </Button>
           </div>
         </main>

@@ -1,5 +1,7 @@
 'use client'
 
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label"
@@ -58,7 +60,7 @@ export default function Events() {
                 <div className="flex flex-col justify-center items-center w-full">
                   <div>Aún no hay eventos creados</div>
                   <Button asChild className="hover:bg-[#9378ff] bg-[#a855f7]">
-                    <a href='/admin/events'>Crear Evento</a>
+                    <Link href='/admin/events'>Crear Evento</Link>
                   </Button>
                 </div>
               }

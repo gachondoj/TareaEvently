@@ -21,6 +21,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json(newBuyer, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: "Error en el servidor" }, { status: 500 });
+    return NextResponse.json({ error: `Error en el servidor: ${error}` }, { status: 500 });
   }
 }

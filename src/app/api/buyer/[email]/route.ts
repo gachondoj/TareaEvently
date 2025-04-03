@@ -15,6 +15,6 @@ export async function GET(_: Request, { params }: { params: { email: string } })
 
     return NextResponse.json(buyer);
   } catch (error) {
-    return NextResponse.json({ error: "Error en el servidor" }, { status: 500 });
+    return NextResponse.json({ error: `Error en el servidor: ${error}` }, { status: 500 });
   }
 }

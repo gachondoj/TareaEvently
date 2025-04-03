@@ -1,10 +1,11 @@
 'use client'
 
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -244,9 +245,9 @@ export default function Event() {
         </main>
         <footer className="w-full flex justify-end pb-5 px-5">
           <Button asChild>
-            <a href="/events">
+            <Link href="/events">
               Volver
-            </a>
+            </Link>
           </Button>
         </footer>
         </div>
