@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import prisma from "@/lib/prisma";
 
-export async function GET(_: Request, { params }: { params: { email: string } }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function GET(_: NextRequest, { params }: any) {
   try {
     const email = decodeURIComponent(params.email); // Decodifica el email de la URL
 
@@ -15,6 +16,7 @@ export async function GET(_: Request, { params }: { params: { email: string } })
 
     return NextResponse.json(buyer);
   } catch (error) {
-    return NextResponse.json({ error: `Error en el servidor: ${error}` }, { status: 500 });
+    console.log(error)
+    return NextResponse.json({ error: "Error en el servidor" }, { status: 500 });
   }
 }
