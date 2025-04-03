@@ -147,8 +147,8 @@ export default function Event() {
 
     return (
         <div className="justify-items-center flex flex-col justify-between min-h-screen font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col gap-[32px] p-5 items-center sm:items-start w-full">
-            <div>{event.title}</div>
+        <main className="flex flex-col gap-5 p-5 items-center justify-center w-full">
+          <div className="text-[#a855f7] font-bold">Evento: {event.title}</div>
             {step == 'tickets' && 
             <Form {...firstStepform}>
                 <form onSubmit={firstStepform.handleSubmit(onSubmitFirstStep)} className="space-y-8">

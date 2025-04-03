@@ -73,7 +73,7 @@ export default function CreateEvent() {
         <main className="flex flex-col gap-5 p-5 items-center justify-center w-full">
             <div className="text-[#a855f7] font-bold">CREAR EVENTO</div>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <FormField
                         control={form.control}
                         name="title"
