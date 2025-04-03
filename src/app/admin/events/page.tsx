@@ -27,6 +27,7 @@ import {
     PopoverTrigger,
   } from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
+import Link from "next/link";
 
 const schema = z.object({
     title: z.string(),
@@ -174,9 +175,9 @@ export default function CreateEvent() {
         </main>
         <footer className="w-full flex justify-end pb-5 px-5">
           <Button asChild>
-            <a href="/admin">
+            <Link href="/admin">
               Volver
-            </a>
+            </Link>
           </Button>
         </footer>
       </div>

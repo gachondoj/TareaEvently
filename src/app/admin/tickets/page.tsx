@@ -8,6 +8,7 @@ import { DataTable } from "./data-table"
 
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type TicketWithDetails = Prisma.TicketGetPayload<{
     include: {
@@ -60,9 +61,9 @@ export default function Tickets() {
         </main>
         <footer className="w-full flex justify-end pb-5 px-5">
           <Button asChild>
-            <a href="/admin">
+            <Link href="/admin">
               Volver
-            </a>
+            </Link>
           </Button>
         </footer>
       </div>

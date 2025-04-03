@@ -9,7 +9,7 @@ export default function Admin() {
 
           <div className="flex gap-5 w-full justify-center">
             <Button asChild className="hover:bg-[#9378ff] bg-[#a855f7]">
-              <a href="/admin/events">Agregar Evento</a>
+              <Link href="/admin/events">Agregar Evento</Link>
             </Button>
             <Button asChild className="hover:bg-[#9378ff] bg-[#a855f7]">
               <Link href="/admin/tickets">Ver Tickets</Link>
@@ -18,9 +18,9 @@ export default function Admin() {
         </main>
         <footer className="w-full flex justify-end pb-5 px-5">
           <Button asChild>
-            <a href="/">
+            <Link href="/">
               Volver
-            </a>
+            </Link>
           </Button>
         </footer>
       </div>

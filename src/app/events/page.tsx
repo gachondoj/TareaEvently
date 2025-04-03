@@ -67,9 +67,9 @@ export default function Events() {
         </main>
         <footer className="w-full flex justify-end pb-5 px-5">
           <Button asChild>
-            <a href="/">
+            <Link href="/">
               Volver
-            </a>
+            </Link>
           </Button>
         </footer>
       </div>
